@@ -9,6 +9,7 @@ https://github.com/gawainhewitt
 #include "mpr121.h"
 #include "reboot.h"
 #include <bus1_U8g2lib.h>        // my bus1 adaptation of https://github.com/olikraus/u8g2/blob/master/cppsrc/U8g2lib.h - manages I2C display
+#include "wavetable.h"
 
 
 const int numberOfSensors = 12;
@@ -24,6 +25,8 @@ void setup() {
     u8g2.begin();
     drawMenu();
     pinMode(rebootButton, INPUT_PULLUP);
+
+    setupAudio();
 }
 
 void loop() {
@@ -37,6 +40,9 @@ void loop() {
     for (uint8_t i=0; i < numberOfSensors; i++) {
         if ((currtouched1 & _BV(i)) && !(lasttouched1 & _BV(i)) ) {
         Serial.print(i); Serial.println(" touched of A");
+        int octave = 4;
+        wavetable1.playFrequency(freqnotes[i][octave]);
+        Serial.print(freqnotes[i][octave]);
         }
     }
 
