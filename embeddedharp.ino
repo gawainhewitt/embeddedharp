@@ -41,7 +41,7 @@ void loop() {
         if ((currtouched1 & _BV(i)) && !(lasttouched1 & _BV(i)) ) {
         Serial.print(i); Serial.println(" touched of A");
         int octave = 4;
-        wavetable1.playFrequency(freqnotes[i][octave]);
+        playSound(octave, i);
         Serial.print(freqnotes[i][octave]);
         }
     }
