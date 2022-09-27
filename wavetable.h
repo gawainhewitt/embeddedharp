@@ -47,38 +47,72 @@ AudioControlSGTL5000     sgtl5000_1;     //xy=694,834
 // GUItool: end automatically generated code
 
 
-float freqnotes[24][9] = {
-{16.35, 32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
-{17.32, 34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
-{18.35, 36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
-{19.45, 38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
-{20.60, 41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
-{21.83, 43.65, 87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
-{23.12, 46.25, 92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
-{24.50, 49.00, 98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
-{25.96, 51.91, 103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
-{27.50, 55.00, 110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
-{29.14, 58.27, 116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
-{30.87, 61.74, 123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07},
-{32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
-{34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
-{36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
-{38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
-{41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
-{43.65, 87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
-{46.25, 92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
-{49.00, 98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
-{51.91, 103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
-{55.00, 110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
-{58.27, 116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
-{61.74, 123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07}
-};
+// float freqnotes[36][9] = {
+// {16.35, 32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
+// {17.32, 34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
+// {18.35, 36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
+// {19.45, 38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
+// {20.60, 41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
+// {21.83, 43.65, 87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
+// {23.12, 46.25, 92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
+// {24.50, 49.00, 98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
+// {25.96, 51.91, 103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
+// {27.50, 55.00, 110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
+// {29.14, 58.27, 116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
+// {30.87, 61.74, 123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07},
+// {32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
+// {34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
+// {36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
+// {38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
+// {41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
+// {43.65, 87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
+// {46.25, 92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
+// {49.00, 98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
+// {51.91, 103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
+// {55.00, 110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
+// {58.27, 116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
+// {61.74, 123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07},
+// {65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
+// {69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
+// {73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
+// {77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
+// {82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
+// {87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
+// {92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
+// {98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
+// {103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
+// {110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
+// {116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
+// {123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07}
+// };
+
+float freqnotes[] = {
+16.35,      17.32,      18.35,      19.45,      20.60,      21.83,      23.12,      24.50,      25.96,      27.50,      29.14,      30.87, 
+32.70,      34.65,      36.71,      38.89,      41.20,      43.65,      46.25,      49.00,      51.91,      55.00,      58.27,      61.74, 
+65.41,      69.30,      73.42,      77.78,      82.41,      87.31,      92.50,      98.00,      103.83,     110.00,     116.54,     123.47, 
+130.81,     138.59,     146.83,     155.56,     164.81,     174.61,     185.00,     196.00,     207.65,     220.00,     233.08,     246.94, 
+261.63,     277.18,     293.66,     311.13,     329.63,     349.23,     369.99,     392.00,     415.30,     440.00,     466.16,     493.88, 
+523.25,     554.37,     587.33,     622.25,     659.26,     698.46,     739.99,     783.99,     830.61,     880.00,     932.33,     987.77,       
+1046.50,    1108.73,    1174.66,    1244.51,    1318.51,    1396.91,    1479.98,    1567.98,    1661.22,    1760.00,    1864.66,    1975.53, 
+2093.00,    2217.46,    2349.32,    2489.02,    2637.02,    2793.83,    2959.96,    3135.96,    3322.44,    3520.00,    3729.31,    3951.07,      
+4186.01,    4434.92,    4698.64,    4978.03};
 
 const String noteNames[24]={"C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 
 String keyName = "C";
+int keyPosition = 0;
+// keyName = noteNames[keyPosition];
 
-int keyPosition = 3;
+int octave = 36;
+
+byte chromatic[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+byte major[] = {0, 4, 7, 12, 16, 19, 24, 28, 31, 36, 40};
+byte minor[] = {0, 3, 7, 12, 15, 19, 24, 27, 31, 36, 39};
+byte dom7[] = {0, 4, 7, 10, 12, 16, 19, 22, 24, 28, 31};
+byte maj7[] = {0, 4, 7, 11, 12, 16, 19, 23, 24, 28, 31};
+byte min7[] = {0, 3, 7, 10, 12, 15, 19, 22, 24, 27, 31};
+
+byte scale[] = {0, 4, 7, 12, 16, 19, 24, 28, 31, 36, 40}; // default to major
 
 void setupAudio() {
 
@@ -99,59 +133,67 @@ void setupAudio() {
     wavetable10.setInstrument(Harp);
     wavetable11.setInstrument(Harp);
 
-    wavetable1.amplitude(0.6);
-    wavetable2.amplitude(0.6);
-    wavetable3.amplitude(0.6);
-    wavetable4.amplitude(0.6);
-    wavetable5.amplitude(0.6);
-    wavetable6.amplitude(0.6);
-    wavetable7.amplitude(0.6);
-    wavetable8.amplitude(0.6);
-    wavetable9.amplitude(0.6);
-    wavetable10.amplitude(0.6);
-    wavetable11.amplitude(0.6);
+    wavetable1.amplitude(0.1);
+    wavetable2.amplitude(0.1);
+    wavetable3.amplitude(0.1);
+    wavetable4.amplitude(0.1);
+    wavetable5.amplitude(0.1);
+    wavetable6.amplitude(0.1);
+    wavetable7.amplitude(0.1);
+    wavetable8.amplitude(0.1);
+    wavetable9.amplitude(0.1);
+    wavetable10.amplitude(0.1);
+    wavetable11.amplitude(0.1);
 
-    freeverbs1.roomsize(0.3);
+    freeverbs1.roomsize(0.1);
     freeverbs1.damping(0.6);
 }
 
 void playSound(int octave, int note) {
-    keyName = noteNames[keyPosition];
     switch(note) 
     {
         case 0:
-            wavetable1.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable1.playFrequency(freqnotes[keyPosition + scale[note]+ octave]);
             break;
         case 1:
-            wavetable2.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable2.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 2:
-            wavetable3.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable3.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 3:
-            wavetable4.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable4.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 4:
-            wavetable5.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable5.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 5:
-            wavetable6.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable6.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 6:
-            wavetable7.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable7.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 7:
-            wavetable8.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable8.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 8:
-            wavetable9.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable9.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 9:
-            wavetable10.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable10.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
         case 10:
-            wavetable11.playFrequency(freqnotes[note + keyPosition][octave]);
+            wavetable11.playFrequency(freqnotes[keyPosition + scale[note] + octave]);
             break;
     }
+}
+
+void changeScale(char scaleType) {
     
+    switch(scaleType) {
+        case 'minor': 
+        for (uint8_t i=0; i < sizeof(scaleType); i++) {
+        scale[i] = minor[i];
+        }
+    }
 }

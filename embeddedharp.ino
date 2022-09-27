@@ -12,7 +12,7 @@ https://github.com/gawainhewitt
 #include "wavetable.h"
 
 
-const int numberOfSensors = 12;
+const int numberOfSensors = 11;
 
 boolean updateDisplayFlag = true;
 
@@ -32,6 +32,8 @@ void setup() {
 void loop() {
     currtouched1 = mprBoard_A.touched();
 
+    changeScale('minor');
+
     if(digitalRead(rebootButton) == LOW){
         Serial.print("reboot");
         doReboot();
@@ -40,9 +42,7 @@ void loop() {
     for (uint8_t i=0; i < numberOfSensors; i++) {
         if ((currtouched1 & _BV(i)) && !(lasttouched1 & _BV(i)) ) {
         Serial.print(i); Serial.println(" touched of A");
-        int octave = 4;
         playSound(octave, i);
-        Serial.print(freqnotes[keyPosition][octave]);
         }
     }
 
