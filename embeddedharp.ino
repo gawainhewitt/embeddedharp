@@ -42,7 +42,7 @@ void loop() {
         Serial.print(i); Serial.println(" touched of A");
         int octave = 4;
         playSound(octave, i);
-        Serial.print(freqnotes[i][octave]);
+        Serial.print(freqnotes[keyPosition][octave]);
         }
     }
 

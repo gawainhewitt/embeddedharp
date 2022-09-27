@@ -20,7 +20,7 @@ void draw() {
     
     u8g2.setCursor(1, 10);
     u8g2.print("Key: "); 
-    u8g2.print("C"); 
+    u8g2.print(keyName); 
     
     u8g2.setCursor(1, 20);
     
