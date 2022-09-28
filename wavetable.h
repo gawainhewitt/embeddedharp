@@ -23,7 +23,6 @@ AudioMixer4              mixer2;         //xy=626,544
 AudioMixer4              mixer3;         //xy=644,668
 AudioMixer4              mixer4;         //xy=814,533
 AudioAmplifier           amp1;           //xy=941,519
-AudioEffectFreeverbStereo freeverbs1;     //xy=1081,521
 AudioOutputI2S           i2s1;           //xy=1236,524
 AudioConnection          patchCord1(wavetable2, 0, mixer1, 1);
 AudioConnection          patchCord2(wavetable5, 0, mixer2, 0);
@@ -62,7 +61,7 @@ String keyName = "C";
 int keyPosition = 0;
 // keyName = noteNames[keyPosition];
 
-int octave = 36;
+int octave = 48;
 
 const int numberOfSensors = 11;
 
@@ -94,17 +93,19 @@ void setupAudio() {
     wavetable10.setInstrument(Harp);
     wavetable11.setInstrument(Harp);
 
-    wavetable1.amplitude(0.8);
-    wavetable2.amplitude(0.8);
-    wavetable3.amplitude(0.8);
-    wavetable4.amplitude(0.8);
-    wavetable5.amplitude(0.8);
-    wavetable6.amplitude(0.8);
-    wavetable7.amplitude(0.8);
-    wavetable8.amplitude(0.8);
-    wavetable9.amplitude(0.8);
-    wavetable10.amplitude(0.8);
-    wavetable11.amplitude(0.8);
+    int wavetableAmplitude = 1;
+
+    wavetable1.amplitude(wavetableAmplitude);
+    wavetable2.amplitude(wavetableAmplitude);
+    wavetable3.amplitude(wavetableAmplitude);
+    wavetable4.amplitude(wavetableAmplitude);
+    wavetable5.amplitude(wavetableAmplitude);
+    wavetable6.amplitude(wavetableAmplitude);
+    wavetable7.amplitude(wavetableAmplitude);
+    wavetable8.amplitude(wavetableAmplitude);
+    wavetable9.amplitude(wavetableAmplitude);
+    wavetable10.amplitude(wavetableAmplitude);
+    wavetable11.amplitude(wavetableAmplitude);
 
     mixer1.gain(0, 0.5);
     mixer1.gain(1, 0.5);
@@ -119,12 +120,12 @@ void setupAudio() {
     mixer3.gain(0, 0.5);
     mixer3.gain(1, 0.5);
     mixer3.gain(2, 0.5);
-    mixer3.gain(3, 0.5);
+    mixer3.gain(3, 0);
 
     mixer4.gain(0, 0.5);
     mixer4.gain(1, 0.5);
     mixer4.gain(2, 0.5);
-    mixer4.gain(3, 0.5);
+    mixer4.gain(3, 0);
 
 }
 

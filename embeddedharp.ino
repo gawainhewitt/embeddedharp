@@ -13,12 +13,28 @@ https://github.com/gawainhewitt
 
 boolean updateDisplayFlag = true;
 
+int activeMenuInput = 0;
+byte menuItems = 6;
+boolean bigMenu = false;
+
+#define UP 0
+#define LEFT 1
+#define CENTRE 2
+#define RIGHT 3
+#define DOWN 4
+#define NUM_BUTTONS 5
+
+const byte buttonPins[] = {3,1,2,5,4}; //UP, LEFT, CENTRE, RIGHT, DOWN
+byte buttonStates[NUM_BUTTONS];
+
+
 U8G2_SSD1306_128X64_NONAME_2_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);   //page buffer = 128bytes (_1_ = 128, _2_ = 256, _F_ = 1024)
 
 
 void setup() {
     Serial.begin(9600);
     init_mpr121();
+    setupPins();
     u8g2.begin();
     drawMenu();
     pinMode(rebootButton, INPUT_PULLUP);
@@ -27,6 +43,8 @@ void setup() {
 }
 
 void loop() {
+    buttonUpdate();  //updates buttons states
+    buttonActions(); //carries out actions from button states
     currtouched1 = mprBoard_A.touched();
 
     changeScale(4);
