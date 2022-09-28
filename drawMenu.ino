@@ -9,9 +9,9 @@ void draw() {
   if (bigMenu) {
     u8g2.setFont(u8g2_font_inr21_mr);
     u8g2.setCursor(1, 30);
-    u8g2.print("C");
+    u8g2.print(keyName);
     u8g2.setCursor(1, 60);
-    u8g2.print("Major");
+    u8g2.print(chordTypeName);
   } else {
     u8g2.setFont(u8g2_font_6x13_tr);
     
@@ -23,7 +23,7 @@ void draw() {
     
 
     u8g2.setCursor(1, 30);
-    u8g2.print("Type: "); u8g2.print("Major");
+    u8g2.print("Type: "); u8g2.print(chordTypeName);
 
     u8g2.setCursor(1, 40);
     

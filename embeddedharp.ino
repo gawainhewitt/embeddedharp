@@ -44,8 +44,6 @@ void loop() {
     buttonActions(); //carries out actions from button states
     currtouched1 = mprBoard_A.touched();
 
-    changeScale(4);
-
     if(digitalRead(rebootButton) == LOW){
         Serial.print("reboot");
         doReboot();

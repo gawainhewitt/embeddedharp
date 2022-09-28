@@ -12,7 +12,6 @@ void buttonUpdate() {
     boolean buttonState = digitalRead(buttonPins[i]);
     if (buttonStates[i] == 3) {
       buttonStates[i] = 2;
-      Serial.println(buttonStates[i]);
     }
     if ((buttonState == LOW) && (buttonStates[i] == 0)) {
       buttonStates[i] = 3;
@@ -52,29 +51,21 @@ void buttonActions() {
   if (buttonStates[LEFT] == 3) {
     switch (activeMenuInput) {
       case 0:
-        Serial.print("left menu: ");
-        Serial.println(activeMenuInput);
+        keyPosition = keyPosition - 1;
+        if (keyPosition < 0) {
+          keyPosition = 11;
+        }
+        keyName = noteNames[keyPosition];
         break;
       case 1:
-        Serial.print("left menu: ");
-        Serial.println(activeMenuInput);
+      currentChord = currentChord - 1;
+        if (currentChord < 0) {
+          currentChord = numChords - 1;
+        }
+        changeChord(currentChord);
+        // drawMenu();
         break;
-      case 2:
-        Serial.print("left menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 3:
-        Serial.print("left menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 4:
-        Serial.print("left menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 5:
-        Serial.print("left menu: ");
-        Serial.println(activeMenuInput);
-        break;
+      
     }
   }
 
@@ -94,28 +85,20 @@ void buttonActions() {
   if (buttonStates[RIGHT] == 3) {
     switch (activeMenuInput) {
       case 0:
-        Serial.print("right menu: ");
-        Serial.println(activeMenuInput);
+      keyPosition = keyPosition + 1;
+        if (keyPosition > 11) {
+          keyPosition = 0;
+        }
+        keyName = noteNames[keyPosition];
+        keyName = noteNames[keyPosition];
         break;
       case 1:
-        Serial.print("right menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 2:
-        Serial.print("right menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 3:
-        Serial.print("right menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 4:
-        Serial.print("right menu: ");
-        Serial.println(activeMenuInput);
-        break;
-      case 5:
-        Serial.print("right menu: ");
-        Serial.println(activeMenuInput);
+        currentChord = currentChord + 1;
+        if (currentChord > numChords - 1) {
+          currentChord = 0;
+        }
+        changeChord(currentChord);
+        // drawMenu();
         break;
     }
   }
