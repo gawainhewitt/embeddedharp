@@ -26,7 +26,7 @@ void draw() {
     
 
     u8g2.setCursor(1, 30);
-    u8g2.print("Type: "); u8g2.print("Scale");
+    u8g2.print("Type: "); u8g2.print("Major");
 
     u8g2.setCursor(1, 40);
     

@@ -40,51 +40,10 @@ AudioConnection          patchCord12(mixer1, 0, mixer4, 0);
 AudioConnection          patchCord13(mixer2, 0, mixer4, 1);
 AudioConnection          patchCord14(mixer3, 0, mixer4, 2);
 AudioConnection          patchCord15(mixer4, amp1);
-AudioConnection          patchCord16(amp1, freeverbs1);
-AudioConnection          patchCord17(freeverbs1, 0, i2s1, 0);
-AudioConnection          patchCord18(freeverbs1, 1, i2s1, 1);
+AudioConnection          patchCord16(amp1, 0, i2s1, 0);
+AudioConnection          patchCord17(amp1, 0, i2s1, 1);
 AudioControlSGTL5000     sgtl5000_1;     //xy=694,834
 // GUItool: end automatically generated code
-
-
-// float freqnotes[36][9] = {
-// {16.35, 32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
-// {17.32, 34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
-// {18.35, 36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
-// {19.45, 38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
-// {20.60, 41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
-// {21.83, 43.65, 87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
-// {23.12, 46.25, 92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
-// {24.50, 49.00, 98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
-// {25.96, 51.91, 103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
-// {27.50, 55.00, 110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
-// {29.14, 58.27, 116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
-// {30.87, 61.74, 123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07},
-// {32.70, 65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
-// {34.65, 69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
-// {36.71, 73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
-// {38.89, 77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
-// {41.20, 82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
-// {43.65, 87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
-// {46.25, 92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
-// {49.00, 98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
-// {51.91, 103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
-// {55.00, 110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
-// {58.27, 116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
-// {61.74, 123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07},
-// {65.41, 130.81, 261.63, 523.25, 1046.50, 2093.00, 4186.01}, 
-// {69.30, 138.59, 277.18, 554.37, 1108.73, 2217.46, 4434.92},
-// {73.42, 146.83, 293.66, 587.33, 1174.66, 2349.32, 4698.64},
-// {77.78, 155.56, 311.13, 622.25, 1244.51, 2489.02, 4978.03},
-// {82.41, 164.81, 329.63, 659.26, 1318.51, 2637.02},
-// {87.31, 174.61, 349.23, 698.46, 1396.91, 2793.83},
-// {92.50, 185.00, 369.99, 739.99, 1479.98, 2959.96},
-// {98.00, 196.00, 392.00, 783.99, 1567.98, 3135.96},
-// {103.83, 207.65, 415.30, 830.61, 1661.22, 3322.44},
-// {110.00, 220.00, 440.00, 880.00, 1760.00, 3520.00},
-// {116.54, 233.08, 466.16, 932.33, 1864.66, 3729.31},
-// {123.47, 246.94, 493.88, 987.77, 1975.53, 3951.07}
-// };
 
 float freqnotes[] = {
 16.35,      17.32,      18.35,      19.45,      20.60,      21.83,      23.12,      24.50,      25.96,      27.50,      29.14,      30.87, 
@@ -104,6 +63,8 @@ int keyPosition = 0;
 // keyName = noteNames[keyPosition];
 
 int octave = 36;
+
+const int numberOfSensors = 11;
 
 byte chromatic[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 byte major[] = {0, 4, 7, 12, 16, 19, 24, 28, 31, 36, 40};
@@ -133,20 +94,38 @@ void setupAudio() {
     wavetable10.setInstrument(Harp);
     wavetable11.setInstrument(Harp);
 
-    wavetable1.amplitude(0.1);
-    wavetable2.amplitude(0.1);
-    wavetable3.amplitude(0.1);
-    wavetable4.amplitude(0.1);
-    wavetable5.amplitude(0.1);
-    wavetable6.amplitude(0.1);
-    wavetable7.amplitude(0.1);
-    wavetable8.amplitude(0.1);
-    wavetable9.amplitude(0.1);
-    wavetable10.amplitude(0.1);
-    wavetable11.amplitude(0.1);
+    wavetable1.amplitude(0.8);
+    wavetable2.amplitude(0.8);
+    wavetable3.amplitude(0.8);
+    wavetable4.amplitude(0.8);
+    wavetable5.amplitude(0.8);
+    wavetable6.amplitude(0.8);
+    wavetable7.amplitude(0.8);
+    wavetable8.amplitude(0.8);
+    wavetable9.amplitude(0.8);
+    wavetable10.amplitude(0.8);
+    wavetable11.amplitude(0.8);
 
-    freeverbs1.roomsize(0.1);
-    freeverbs1.damping(0.6);
+    mixer1.gain(0, 0.5);
+    mixer1.gain(1, 0.5);
+    mixer1.gain(2, 0.5);
+    mixer1.gain(3, 0.5);
+
+    mixer2.gain(0, 0.5);
+    mixer2.gain(1, 0.5);
+    mixer2.gain(2, 0.5);
+    mixer2.gain(3, 0.5);
+
+    mixer3.gain(0, 0.5);
+    mixer3.gain(1, 0.5);
+    mixer3.gain(2, 0.5);
+    mixer3.gain(3, 0.5);
+
+    mixer4.gain(0, 0.5);
+    mixer4.gain(1, 0.5);
+    mixer4.gain(2, 0.5);
+    mixer4.gain(3, 0.5);
+
 }
 
 void playSound(int octave, int note) {
@@ -188,12 +167,28 @@ void playSound(int octave, int note) {
     }
 }
 
-void changeScale(char scaleType) {
+void changeScale(int scaleType) {
     
     switch(scaleType) {
-        case 'minor': 
-        for (uint8_t i=0; i < sizeof(scaleType); i++) {
+        case 0: 
+        for (uint8_t i=0; i < numberOfSensors; i++) {
+        scale[i] = major[i];
+        }
+        case 1: 
+        for (uint8_t i=0; i < numberOfSensors; i++) {
         scale[i] = minor[i];
+        }
+        case 2: 
+        for (uint8_t i=0; i < numberOfSensors; i++) {
+        scale[i] = dom7[i];
+        }
+        case 3: 
+        for (uint8_t i=0; i < numberOfSensors; i++) {
+        scale[i] = maj7[i];
+        }
+        case 4: 
+        for (uint8_t i=0; i < numberOfSensors; i++) {
+        scale[i] = min7[i];
         }
     }
 }
