@@ -14,7 +14,7 @@ https://github.com/gawainhewitt
 boolean updateDisplayFlag = true;
 
 int activeMenuInput = 0;
-byte menuItems = 6;
+byte menuItems = 2;
 boolean bigMenu = false;
 
 #define UP 0
@@ -23,9 +23,6 @@ boolean bigMenu = false;
 #define RIGHT 3
 #define DOWN 4
 #define NUM_BUTTONS 5
-
-const byte buttonPins[] = {3,1,2,5,4}; //UP, LEFT, CENTRE, RIGHT, DOWN
-byte buttonStates[NUM_BUTTONS];
 
 
 U8G2_SSD1306_128X64_NONAME_2_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);   //page buffer = 128bytes (_1_ = 128, _2_ = 256, _F_ = 1024)

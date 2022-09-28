@@ -1,13 +1,18 @@
 //this function manages 4-state buttons (pressed, held, released, off)
-int scrollTime = 0;
+unsigned int scrollTime = 250;
 long unsigned int heldTimer = 0;
 long unsigned int menuTimer = 0;
+
+
+const byte buttonPins[] = {3,1,2,5,4}; //UP, LEFT, CENTRE, RIGHT, DOWN
+byte buttonStates[NUM_BUTTONS];
 
 void buttonUpdate() {
   for (int i = 0; i < NUM_BUTTONS; i++) {
     boolean buttonState = digitalRead(buttonPins[i]);
     if (buttonStates[i] == 3) {
       buttonStates[i] = 2;
+      Serial.println(buttonStates[i]);
     }
     if ((buttonState == LOW) && (buttonStates[i] == 0)) {
       buttonStates[i] = 3;
@@ -33,6 +38,8 @@ void buttonActions() {
   if (buttonStates[UP] == 3) {
     Serial.print("up menu: ");
     Serial.println(activeMenuInput);
+    Serial.print("buttonState ");
+    Serial.println(buttonStates[0]);
     activeMenuInput--;
   }
 
