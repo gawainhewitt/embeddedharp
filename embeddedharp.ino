@@ -16,6 +16,7 @@ boolean updateDisplayFlag = true;
 int activeMenuInput = 0;
 byte menuItems = 2;
 boolean bigMenu = false;
+float gain = 0;
 
 #define UP 0
 #define LEFT 1
@@ -35,11 +36,23 @@ void setup() {
     u8g2.begin();
     drawMenu();
     pinMode(rebootButton, INPUT_PULLUP);
+    pinMode(volumePin, INPUT);
 
     setupAudio();
 }
 
 void loop() {
+
+    int knob = analogRead(volumePin); // knob = 0 to 1023
+    gain = (float)knob / 1023.0;
+    // Serial.print("Gain is: ");
+    // Serial.println(gain);
+
+// ***** if no software volume control then set gain
+
+// float gain = 1.0;
+
+    amp1.gain(gain);
     buttonUpdate();  //updates buttons states
     buttonActions(); //carries out actions from button states
     currtouched1 = mprBoard_A.touched();
@@ -64,4 +77,20 @@ void loop() {
     }
 
     return;
+
+    // debugging info, what
+  Serial.print("\t\t\t\t\t\t\t\t\t\t\t\t\t 0x"); Serial.println(mprBoard_A.touched(), HEX);
+  Serial.print("Filt: ");
+  for (uint8_t i=0; i<12; i++) {
+    Serial.print(mprBoard_A.filteredData(i)); Serial.print("\t");
+  }
+  Serial.println();
+  Serial.print("Base: ");
+  for (uint8_t i=0; i<12; i++) {
+    Serial.print(mprBoard_A.baselineData(i)); Serial.print("\t");
+  }
+  Serial.println();
+  
+  // put a delay so it isn't overwhelming
+  delay(100);
 }

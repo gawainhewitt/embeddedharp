@@ -75,7 +75,7 @@ byte chord[] = {0, 4, 7, 12, 16, 19, 24, 28, 31, 36, 40}; // default to major
 int currentChord = 0;
 int numChords = 5;
 
-String chordTypeName = "Major";
+String chordTypeName = "";
 
 
 void setupAudio() {
@@ -111,24 +111,24 @@ void setupAudio() {
     wavetable10.amplitude(wavetableAmplitude);
     wavetable11.amplitude(wavetableAmplitude);
 
-    mixer1.gain(0, 0.5);
-    mixer1.gain(1, 0.5);
-    mixer1.gain(2, 0.5);
-    mixer1.gain(3, 0.5);
+    mixer1.gain(0, 0.8);
+    mixer1.gain(1, 0.8);
+    mixer1.gain(2, 0.8);
+    mixer1.gain(3, 0.8);
 
-    mixer2.gain(0, 0.5);
-    mixer2.gain(1, 0.5);
-    mixer2.gain(2, 0.5);
-    mixer2.gain(3, 0.5);
+    mixer2.gain(0, 0.8);
+    mixer2.gain(1, 0.8);
+    mixer2.gain(2, 0.8);
+    mixer2.gain(3, 0.8);
 
-    mixer3.gain(0, 0.5);
-    mixer3.gain(1, 0.5);
-    mixer3.gain(2, 0.5);
+    mixer3.gain(0, 0.8);
+    mixer3.gain(1, 0.8);
+    mixer3.gain(2, 0.8);
     mixer3.gain(3, 0);
 
-    mixer4.gain(0, 0.5);
-    mixer4.gain(1, 0.5);
-    mixer4.gain(2, 0.5);
+    mixer4.gain(0, 0.8);
+    mixer4.gain(1, 0.8);
+    mixer4.gain(2, 0.8);
     mixer4.gain(3, 0);
 
 }
@@ -178,7 +178,7 @@ void changeChord(int chordType) {
         case 0: 
         for (uint8_t i=0; i < numberOfSensors; i++) {
         chord[i] = major[i];
-        chordTypeName = "Major";
+        chordTypeName = "";
         }
         break;
         case 1: 
