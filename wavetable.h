@@ -6,43 +6,79 @@
 #include <SD.h>
 #include <SerialFlash.h>
 
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
 // GUItool: begin automatically generated code
-AudioSynthWavetable      wavetable2;     //xy=320,360
-AudioSynthWavetable      wavetable5;     //xy=320,483
-AudioSynthWavetable      wavetable6;     //xy=320,523
-AudioSynthWavetable      wavetable1;     //xy=321,320
-AudioSynthWavetable      wavetable3;     //xy=321,402
-AudioSynthWavetable      wavetable4;     //xy=322,443
-AudioSynthWavetable      wavetable7;     //xy=322,562
-AudioSynthWavetable      wavetable8;     //xy=323,601
-AudioSynthWavetable      wavetable9;     //xy=326,639
-AudioSynthWavetable      wavetable10;    //xy=327,676
-AudioSynthWavetable      wavetable11;    //xy=328,716
-AudioMixer4              mixer1;         //xy=597,389
-AudioMixer4              mixer2;         //xy=626,544
-AudioMixer4              mixer3;         //xy=644,668
-AudioMixer4              mixer4;         //xy=814,533
-AudioAmplifier           amp1;           //xy=941,519
-AudioOutputI2S           i2s1;           //xy=1236,524
-AudioConnection          patchCord1(wavetable2, 0, mixer1, 1);
-AudioConnection          patchCord2(wavetable5, 0, mixer2, 0);
-AudioConnection          patchCord3(wavetable6, 0, mixer2, 1);
-AudioConnection          patchCord4(wavetable1, 0, mixer1, 0);
-AudioConnection          patchCord5(wavetable3, 0, mixer1, 2);
-AudioConnection          patchCord6(wavetable4, 0, mixer1, 3);
-AudioConnection          patchCord7(wavetable7, 0, mixer2, 2);
-AudioConnection          patchCord8(wavetable8, 0, mixer2, 3);
-AudioConnection          patchCord9(wavetable9, 0, mixer3, 0);
-AudioConnection          patchCord10(wavetable10, 0, mixer3, 1);
-AudioConnection          patchCord11(wavetable11, 0, mixer3, 2);
-AudioConnection          patchCord12(mixer1, 0, mixer4, 0);
-AudioConnection          patchCord13(mixer2, 0, mixer4, 1);
-AudioConnection          patchCord14(mixer3, 0, mixer4, 2);
-AudioConnection          patchCord15(mixer4, amp1);
-AudioConnection          patchCord16(amp1, 0, i2s1, 0);
-AudioConnection          patchCord17(amp1, 0, i2s1, 1);
-AudioControlSGTL5000     sgtl5000_1;     //xy=694,834
+AudioSynthWavetable      wavetable2;     //xy=248,126
+AudioSynthWavetable      wavetable5;     //xy=248,249
+AudioSynthWavetable      wavetable6;     //xy=248,289
+AudioSynthWavetable      wavetable1;     //xy=249,86
+AudioSynthWavetable      wavetable3;     //xy=249,168
+AudioSynthWavetable      wavetable4;     //xy=250,209
+AudioSynthWavetable      wavetable7;     //xy=250,328
+AudioSynthWavetable      wavetable8;     //xy=251,367
+AudioSynthWavetable      wavetable9;     //xy=254,405
+AudioSynthWavetable      wavetable10;    //xy=255,442
+AudioSynthWavetable      wavetable11;    //xy=256,482
+AudioEffectEnvelope      envelope8;      //xy=384,357
+AudioEffectEnvelope      envelope2;      //xy=385,124
+AudioEffectEnvelope      envelope4;      //xy=385,205
+AudioEffectEnvelope      envelope5;      //xy=385,240
+AudioEffectEnvelope      envelope3;      //xy=386,164
+AudioEffectEnvelope      envelope7;      //xy=386,321
+AudioEffectEnvelope      envelope1;      //xy=387,86
+AudioEffectEnvelope      envelope6;      //xy=389,284
+AudioEffectEnvelope      envelope9;      //xy=394,397
+AudioEffectEnvelope      envelope10;     //xy=401,440
+AudioEffectEnvelope      envelope11;     //xy=415,482
+AudioMixer4              mixer1;         //xy=525,155
+AudioMixer4              mixer2;         //xy=554,310
+AudioMixer4              mixer3;         //xy=572,434
+AudioMixer4              mixer4;         //xy=742,299
+AudioAmplifier           amp1;           //xy=869,285
+AudioOutputI2S           i2s1;           //xy=1164,290
+AudioConnection          patchCord1(wavetable2, envelope2);
+AudioConnection          patchCord2(wavetable5, envelope5);
+AudioConnection          patchCord3(wavetable6, envelope6);
+AudioConnection          patchCord4(wavetable1, envelope1);
+AudioConnection          patchCord5(wavetable3, envelope3);
+AudioConnection          patchCord6(wavetable4, envelope4);
+AudioConnection          patchCord7(wavetable7, envelope7);
+AudioConnection          patchCord8(wavetable8, envelope8);
+AudioConnection          patchCord9(wavetable9, envelope9);
+AudioConnection          patchCord10(wavetable10, envelope10);
+AudioConnection          patchCord11(wavetable11, envelope11);
+AudioConnection          patchCord12(envelope8, 0, mixer2, 3);
+AudioConnection          patchCord13(envelope2, 0, mixer1, 1);
+AudioConnection          patchCord14(envelope4, 0, mixer1, 3);
+AudioConnection          patchCord15(envelope5, 0, mixer2, 0);
+AudioConnection          patchCord16(envelope3, 0, mixer1, 2);
+AudioConnection          patchCord17(envelope7, 0, mixer2, 2);
+AudioConnection          patchCord18(envelope1, 0, mixer1, 0);
+AudioConnection          patchCord19(envelope6, 0, mixer2, 1);
+AudioConnection          patchCord20(envelope9, 0, mixer3, 0);
+AudioConnection          patchCord21(envelope10, 0, mixer3, 1);
+AudioConnection          patchCord22(envelope11, 0, mixer3, 2);
+AudioConnection          patchCord23(mixer1, 0, mixer4, 0);
+AudioConnection          patchCord24(mixer2, 0, mixer4, 1);
+AudioConnection          patchCord25(mixer3, 0, mixer4, 2);
+AudioConnection          patchCord26(mixer4, amp1);
+AudioConnection          patchCord27(amp1, 0, i2s1, 0);
+AudioConnection          patchCord28(amp1, 0, i2s1, 1);
+AudioControlSGTL5000     sgtl5000_1;     //xy=622,600
 // GUItool: end automatically generated code
+
+
 
 float freqnotes[] = {
 16.35,      17.32,      18.35,      19.45,      20.60,      21.83,      23.12,      24.50,      25.96,      27.50,      29.14,      30.87, 
@@ -111,6 +147,21 @@ void setupAudio() {
     wavetable10.amplitude(wavetableAmplitude);
     wavetable11.amplitude(wavetableAmplitude);
 
+    int attackAmount = 3;
+
+    envelope1.attack(attackAmount);
+    envelope2.attack(attackAmount);
+    envelope3.attack(attackAmount);
+    envelope4.attack(attackAmount);
+    envelope5.attack(attackAmount);
+    envelope6.attack(attackAmount);
+    envelope7.attack(attackAmount);
+    envelope8.attack(attackAmount);
+    envelope9.attack(attackAmount);
+    envelope10.attack(attackAmount);
+    envelope11.attack(attackAmount);
+
+
     mixer1.gain(0, 0.8);
     mixer1.gain(1, 0.8);
     mixer1.gain(2, 0.8);
@@ -138,36 +189,47 @@ void playSound(int octave, int note) {
     {
         case 0:
             wavetable1.playFrequency(freqnotes[keyPosition + chord[note]+ octave]);
+            envelope1.noteOn();
             break;
         case 1:
             wavetable2.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope2.noteOn();
             break;
         case 2:
             wavetable3.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope3.noteOn();
             break;
         case 3:
             wavetable4.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope4.noteOn();
             break;
         case 4:
             wavetable5.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope5.noteOn();
             break;
         case 5:
             wavetable6.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope6.noteOn();
             break;
         case 6:
             wavetable7.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope7.noteOn();
             break;
         case 7:
             wavetable8.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope8.noteOn();
             break;
         case 8:
             wavetable9.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope9.noteOn();
             break;
         case 9:
             wavetable10.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope10.noteOn();
             break;
         case 10:
             wavetable11.playFrequency(freqnotes[keyPosition + chord[note] + octave]);
+            envelope11.noteOn();
             break;
     }
 }
