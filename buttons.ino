@@ -32,6 +32,40 @@ void buttonUpdate() {
   //1-momentary off
 }
 
+void volumeUpdate(int knob) {
+  // Serial.println((float)knob / 1023.0);
+  float knobVolume = (float)knob / 1023.0;
+  
+  if ( knobChange(knobVolume, gain)){
+    gain = knobVolume;
+    amp1.gain(gain);
+    updateDisplayFlag = true;
+    bigMenu = false;
+    heldTimer = millis();
+    menuTimer = millis();
+    bigMenu = false;
+  }
+}
+
+bool knobChange(float knobVol, float gainTest){
+  float sensitivity = 0.03;
+  Serial.print("knob volume ");
+  Serial.println(knobVol);
+  Serial.print("gain ");
+  Serial.println(gainTest);
+  Serial.print("gain + sensitivity ");
+  Serial.println(gainTest + sensitivity);
+  if (knobVol > gainTest + sensitivity){
+    Serial.println("greater");
+    return true;
+  } else if (knobVol < gainTest - sensitivity){
+    Serial.println("lesser");
+    return true;
+  } else {
+    return false;
+  }
+}
+
 //this function acts upon button presses
 void buttonActions() {
   if (buttonStates[UP] == 3) {

@@ -43,40 +43,44 @@ void setup() {
 
 void loop() {
 
-    int knob = analogRead(volumePin); // knob = 0 to 1023
-    gain = (float)knob / 1023.0;
-    // Serial.print("Gain is: ");
-    // Serial.println(gain);
+  buttonUpdate();  //updates buttons states
+  buttonActions(); //carries out actions from button states
+  
+  int knob = analogRead(volumePin); // knob = 0 to 1023
+  volumeUpdate(knob); 
+
+  
+  // Serial.print("Gain is: ");
+  // Serial.println(gain);
 
 // ***** if no software volume control then set gain
 
 // float gain = 1.0;
 
-    amp1.gain(gain);
-    buttonUpdate();  //updates buttons states
-    buttonActions(); //carries out actions from button states
-    currtouched1 = mprBoard_A.touched();
+  
+  
+  currtouched1 = mprBoard_A.touched();
 
-    if(digitalRead(rebootButton) == LOW){
-        Serial.print("reboot");
-        doReboot();
-    }
+  if(digitalRead(rebootButton) == LOW){
+      Serial.print("reboot");
+      doReboot();
+  }
 
-    for (uint8_t i=0; i < numberOfSensors; i++) {
-        if ((currtouched1 & _BV(i)) && !(lasttouched1 & _BV(i)) ) {
-        Serial.print(i); Serial.println(" touched of A");
-        playSound(octave, i);
-        }
-    }
+  for (uint8_t i=0; i < numberOfSensors; i++) {
+      if ((currtouched1 & _BV(i)) && !(lasttouched1 & _BV(i)) ) {
+      Serial.print(i); Serial.println(" touched of A");
+      playSound(octave, i);
+      }
+  }
 
-    lasttouched1 = currtouched1;
+  lasttouched1 = currtouched1;
 
-    if (updateDisplayFlag == true) {
-        drawMenu();            //update the menu
-        updateDisplayFlag = false;
-    }
+  if (updateDisplayFlag == true) {
+      drawMenu();            //update the menu
+      updateDisplayFlag = false;
+  }
 
-    return;
+  return;
 
     // debugging info, what
   Serial.print("\t\t\t\t\t\t\t\t\t\t\t\t\t 0x"); Serial.println(mprBoard_A.touched(), HEX);
