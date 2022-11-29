@@ -48,16 +48,6 @@ void loop() {
   
   int knob = analogRead(volumePin); // knob = 0 to 1023
   volumeUpdate(knob); 
-
-  
-  // Serial.print("Gain is: ");
-  // Serial.println(gain);
-
-// ***** if no software volume control then set gain
-
-// float gain = 1.0;
-
-  
   
   currtouched1 = mprBoard_A.touched();
 
